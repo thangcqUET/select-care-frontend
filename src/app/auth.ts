@@ -13,4 +13,7 @@ export const { handlers, auth, signIn, signOut } = NextAuth({
         strategy: "jwt",
         maxAge: 60 * 60 * 24 * 90, // 90 days
     },
+    pages: {
+        verifyRequest: "/api/auth/verify-request",
+    },
 })
