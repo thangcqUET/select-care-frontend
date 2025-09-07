@@ -37,9 +37,54 @@ export default function Home() {
             One click selection, infinite possibilities ✨
           </p>
           
-          {/* Sign In Component */}
+          {/* Chrome Extension CTA - Centered */}
+          <div className="flex justify-center mb-8">
+            <a 
+              href="https://chrome.google.com/webstore/detail/selectcare" 
+              target="_blank" 
+              rel="noopener noreferrer"
+              className="group relative inline-flex items-center justify-center px-8 py-4 text-lg font-bold text-white bg-gradient-to-r from-purple-600 to-blue-600 hover:from-purple-700 hover:to-blue-700 rounded-2xl transition-all duration-300 shadow-2xl hover:scale-105 transform"
+            >
+              {/* Button content */}
+              <div className="relative flex items-center space-x-3">
+                {/* Chrome Icon */}
+                <svg className="w-6 h-6" viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M12,20L15.46,14H15.46C15.8,13.4 16,12.73 16,12C16,10.8 15.46,9.73 14.62,9H19.41C19.79,9.93 20,10.94 20,12A8,8 0 0,1 12,20M4,12C4,10.54 4.39,9.18 5.07,8.04L8.54,14C8.2,14.6 8,15.27 8,16C8,17.2 8.54,18.27 9.38,19H4.59C4.21,18.07 4,17.06 4,16V12M12,4A8,8 0 0,1 18.93,7.96L15.46,14C14.84,13.4 14,13 13.13,13H8.54C9.46,11.39 10.65,10.04 12.13,9.04L12,4M12,8A4,4 0 0,0 8,12A4,4 0 0,0 12,16A4,4 0 0,0 16,12A4,4 0 0,0 12,8Z"/>
+                </svg>
+                <span>Install Chrome Extension</span>
+                {/* Arrow Icon */}
+                <svg className="w-5 h-5 group-hover:translate-x-1 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6"/>
+                </svg>
+              </div>
+            </a>
+          </div>
+
+          {/* Sign In - Secondary Option */}
           <div className="mb-8">
             <SignIn />
+          </div>
+
+          {/* Trust Indicators */}
+          <div className="flex items-center justify-center space-x-6 text-sm text-gray-500 mb-12">
+            <div className="flex items-center space-x-2">
+              <svg className="w-4 h-4 text-green-500" fill="currentColor" viewBox="0 0 20 20">
+                <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd"/>
+              </svg>
+              <span>100% Free</span>
+            </div>
+            <div className="flex items-center space-x-2">
+              <svg className="w-4 h-4 text-green-500" fill="currentColor" viewBox="0 0 20 20">
+                <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd"/>
+              </svg>
+              <span>No Registration Required</span>
+            </div>
+            <div className="flex items-center space-x-2">
+              <svg className="w-4 h-4 text-green-500" fill="currentColor" viewBox="0 0 20 20">
+                <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd"/>
+              </svg>
+              <span>Instant Setup</span>
+            </div>
           </div>
           
         </div>
@@ -69,6 +114,34 @@ export default function Home() {
             <h3 className="text-xl font-semibold text-gray-900 mb-4">Lightning Fast</h3>
             <p className="text-gray-600">Organize and find your content instantly with our powerful search and tagging</p>
           </div>
+        </div>
+      </section>
+
+      {/* Extension Showcase Section */}
+      <section className="max-w-7xl mx-auto px-6 py-20">
+        <div className="bg-gradient-to-r from-purple-600 to-blue-600 rounded-3xl p-12 text-center text-white">
+          <h2 className="text-3xl md:text-4xl font-bold mb-6">
+            🚀 Get Started in Seconds
+          </h2>
+          <p className="text-xl mb-8 opacity-90">
+            Install our Chrome extension and start selecting content across the web instantly
+          </p>
+          
+          <a 
+            href="https://chrome.google.com/webstore/detail/selectcare" 
+            target="_blank" 
+            rel="noopener noreferrer"
+            className="inline-flex items-center justify-center px-8 py-4 bg-white text-purple-600 font-bold text-lg rounded-2xl hover:bg-gray-100 transition-all duration-300 shadow-xl hover:shadow-2xl hover:scale-105 transform"
+          >
+            <svg className="w-6 h-6 mr-3" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M12,20L15.46,14H15.46C15.8,13.4 16,12.73 16,12C16,10.8 15.46,9.73 14.62,9H19.41C19.79,9.93 20,10.94 20,12A8,8 0 0,1 12,20M4,12C4,10.54 4.39,9.18 5.07,8.04L8.54,14C8.2,14.6 8,15.27 8,16C8,17.2 8.54,18.27 9.38,19H4.59C4.21,18.07 4,17.06 4,16V12M12,4A8,8 0 0,1 18.93,7.96L15.46,14C14.84,13.4 14,13 13.13,13H8.54C9.46,11.39 10.65,10.04 12.13,9.04L12,4M12,8A4,4 0 0,0 8,12A4,4 0 0,0 12,16A4,4 0 0,0 16,12A4,4 0 0,0 12,8Z"/>
+            </svg>
+            Add to Chrome - It's Free!
+          </a>
+          
+          <p className="text-sm mt-4 opacity-75">
+            ⭐ Rated 4.9/5 by 10,000+ users
+          </p>
         </div>
       </section>
 
