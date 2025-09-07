@@ -1,14 +1,14 @@
 import { NextRequest, NextResponse } from 'next/server';
 import jwt from 'jsonwebtoken';
-import { auth } from '@/app/auth';
+import { auth } from '@/app/auth/supabase';
 
 export async function POST(request: NextRequest) {
   try {
     const { state, userEmail } = await request.json();
-    
+    console.log('Extension auth request for user:', userEmail);
     // Verify the user is authenticated
-    const session = await auth();
-    if (!session?.user || session.user.email !== userEmail) {
+    const user = await auth();
+    if (!user || user.email !== userEmail) {
       return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
     }
 

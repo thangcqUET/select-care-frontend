@@ -1,15 +1,18 @@
-import { signIn, auth } from "../auth"
- 
+// import { signIn, auth } from "../auth/next"
+import { redirect } from "next/navigation"
+import { signIn, auth } from "../auth/supabase"
+
 export async function SignIn() {
-  const session = await auth()
+  const user = await auth();
   return (
     <>
       {
-        !session ? (
+        !user ? (
         <form
           action={async (formData) => {
             "use server"
-            await signIn("resend", formData)
+            await signIn(formData.get("email") as string)
+            redirect("/api/auth/verify-request")
           }}
           className="w-full max-w-md mx-auto"
         >
@@ -38,7 +41,7 @@ export async function SignIn() {
               <span className="text-2xl">✅</span>
             </div>
             <h3 className="text-xl font-semibold text-gray-900 mb-2">Welcome back!</h3>
-            <p className="text-gray-600">Hey there, <span className="font-medium text-purple-600">{session.user?.email}</span></p>
+            <p className="text-gray-600">Hey there, <span className="font-medium text-purple-600">{user?.email}</span></p>
             <p className="text-sm text-gray-500 mt-4">You're ready to start selecting amazing content! 🎉</p>
           </div>
         )

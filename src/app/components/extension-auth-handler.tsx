@@ -2,6 +2,7 @@
 
 import { useEffect } from 'react';
 import { useSearchParams } from 'next/navigation';
+import { createClient } from '../lib/supabase/client';
 
 // Extend the global Window interface to include chrome
 declare global {
@@ -16,6 +17,7 @@ declare global {
 }
 
 export function ExtensionAuthHandler() {
+  console.log("ExtensionAuthHandler mounted");
   const searchParams = useSearchParams();
   
   useEffect(() => {
@@ -30,10 +32,9 @@ export function ExtensionAuthHandler() {
   const handleExtensionAuth = async (state: string) => {
     try {
       // Check if user is authenticated
-      const response = await fetch('/api/auth/session');
-      const session = await response.json();
-      
-      if (session?.user) {
+      const client = await createClient();
+      const { data: { user }, error } = await client.auth.getUser();
+      if (user) {
         // Generate API token for the extension
         const tokenResponse = await fetch('/api/extension/auth', {
           method: 'POST',
@@ -42,7 +43,7 @@ export function ExtensionAuthHandler() {
           },
           body: JSON.stringify({
             state,
-            userEmail: session.user.email,
+            userEmail: user.email,
           }),
         });
         
@@ -60,7 +61,7 @@ export function ExtensionAuthHandler() {
                 window.chrome.runtime.sendMessage(extensionId, {
                   action: 'authenticate',
                   token: token,
-                  userEmail: session.user.email,
+                  userEmail: user.email,
                   state: state
                 }, (response: any) => {
                   if (window.chrome?.runtime?.lastError) {
@@ -82,7 +83,7 @@ export function ExtensionAuthHandler() {
                   type: 'SELECTCARE_AUTH',
                   action: 'authenticate',
                   token: token,
-                  userEmail: session.user.email,
+                  userEmail: user.email,
                   state: state
                 }, window.location.origin);
                 

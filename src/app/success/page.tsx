@@ -1,4 +1,4 @@
-import { auth } from "@/app/auth";
+import { auth } from "@/app/auth/next";
 import { redirect } from "next/navigation";
 
 export default async function SuccessPage() {
