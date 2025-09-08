@@ -1,10 +1,10 @@
-import { auth } from "@/app/auth/next";
+import { auth } from "@/app/auth/supabase";
 import { redirect } from "next/navigation";
 
 export default async function SuccessPage() {
-  const session = await auth();
-  
-  if (!session) {
+  const user = await auth();
+
+  if (!user) {
     redirect("/");
   }
 
@@ -33,7 +33,7 @@ export default async function SuccessPage() {
 
           {/* Welcome Message */}
           <p className="text-gray-600 mb-6">
-            Hey <span className="font-semibold text-purple-600">{session.user?.email}</span>! 
+            Hey <span className="font-semibold text-purple-600">{user?.email}</span>! 
             Your account is all set up and ready to go.
           </p>
 

@@ -1,6 +1,6 @@
 // import { signIn, auth } from "../auth/next"
 import { redirect } from "next/navigation"
-import { signIn, auth } from "../auth/supabase"
+import { signIn, auth } from "../app/auth/supabase"
 
 export async function SignIn() {
   const user = await auth();

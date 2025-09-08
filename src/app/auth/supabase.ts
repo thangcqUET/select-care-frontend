@@ -1,5 +1,5 @@
 // gen auth function to get user(session), signin function in supabase
-import { createClient } from "../lib/supabase/server"
+import { createClient } from "../../lib/supabase/server"
 import { headers } from "next/headers"
 export const auth = async () => {
     const supabase = await createClient();

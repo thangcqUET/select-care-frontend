@@ -1,6 +1,6 @@
-import { SignIn } from "./components/sign-in";
-import Payment from "./components/payment";
-import { ExtensionAuthHandler } from "./components/extension-auth-handler";
+import { SignIn } from "../components/sign-in";
+import Payment from "../components/payment";
+import { ExtensionAuthHandler } from "../components/extension-auth-handler";
 import { Suspense } from "react";
 
 export default function Home() {
