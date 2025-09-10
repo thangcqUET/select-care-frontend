@@ -24,7 +24,7 @@ export function UsageStats({ usageData, currentPlan }: UsageStatsProps) {
         {/* Daily Usage */}
         <div className="space-y-3">
           <div className="flex items-center justify-between">
-            <h3 className="text-sm font-medium text-gray-700">Today's Selections</h3>
+            <h3 className="text-sm font-medium text-gray-700">Today&apos;s Selections</h3>
             {dailyLimit && (
               <span className="text-xs text-gray-500">{selectionsToday}/{dailyLimit}</span>
             )}

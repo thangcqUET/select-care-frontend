@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect } from 'react';
+import { useEffect, useCallback } from 'react';
 import { useSearchParams } from 'next/navigation';
 import { createClient } from '../lib/supabase/client';
 
@@ -9,7 +9,11 @@ declare global {
   interface Window {
     chrome?: {
       runtime?: {
-        sendMessage: (extensionId: string, message: any, callback: (response: any) => void) => void;
+        sendMessage: (
+          extensionId: string, 
+          message: Record<string, unknown>, 
+          callback: (response: Record<string, unknown>) => void
+        ) => void;
         lastError?: { message: string };
       };
     };
@@ -20,20 +24,11 @@ export function ExtensionAuthHandler() {
   console.log("ExtensionAuthHandler mounted");
   const searchParams = useSearchParams();
   
-  useEffect(() => {
-    const isExtensionAuth = searchParams.get('extension_auth') === 'true';
-    const state = searchParams.get('state');
-    
-    if (isExtensionAuth && state) {
-      handleExtensionAuth(state);
-    }
-  }, [searchParams]);
-
-  const handleExtensionAuth = async (state: string) => {
+  const handleExtensionAuth = useCallback(async (state: string) => {
     try {
       // Check if user is authenticated
       const client = await createClient();
-      const { data: { user }, error } = await client.auth.getUser();
+      const { data: { user } } = await client.auth.getUser();
       if (user) {
         // Generate API token for the extension
         const tokenResponse = await fetch('/api/extension/auth', {
@@ -63,7 +58,7 @@ export function ExtensionAuthHandler() {
                   token: token,
                   userEmail: user.email,
                   state: state
-                }, (response: any) => {
+                }, (response: Record<string, unknown>) => {
                   if (window.chrome?.runtime?.lastError) {
                     console.log('Extension not installed or not responding:', window.chrome.runtime.lastError.message);
                     showExtensionNotFoundMessage();
@@ -110,7 +105,16 @@ export function ExtensionAuthHandler() {
       console.error('Extension auth error:', error);
       showErrorMessage();
     }
-  };
+  }, []);
+
+  useEffect(() => {
+    const isExtensionAuth = searchParams.get('extension_auth') === 'true';
+    const state = searchParams.get('state');
+    
+    if (isExtensionAuth && state) {
+      handleExtensionAuth(state);
+    }
+  }, [searchParams, handleExtensionAuth]);
 
   const showSuccessMessage = () => {
     // Update the page to show success

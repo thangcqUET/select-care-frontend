@@ -1,4 +1,5 @@
-import { auth } from "@/app/auth/supabase";
+import Link from 'next/link';
+import { auth } from '../auth/supabase';
 import { redirect } from "next/navigation";
 
 export default async function SuccessPage() {
@@ -39,7 +40,7 @@ export default async function SuccessPage() {
 
           {/* What's Next */}
           <div className="bg-gradient-to-r from-purple-50 to-blue-50 rounded-xl p-4 mb-6">
-            <h3 className="font-semibold text-gray-900 mb-3">What's next?</h3>
+            <h3 className="font-semibold text-gray-900 mb-3">What&apos;s next?</h3>
             <div className="space-y-2 text-sm text-gray-600">
               <div className="flex items-center justify-center">
                 <span className="mr-2">📥</span>
@@ -58,19 +59,19 @@ export default async function SuccessPage() {
 
           {/* Action Buttons */}
           <div className="space-y-3">
-            <a 
+            <Link 
               href="/dashboard" 
               className="block w-full px-6 py-3 bg-gradient-to-r from-purple-500 to-blue-500 text-white font-semibold rounded-full hover:shadow-lg hover:scale-105 transition-all duration-200"
             >
               Go to Dashboard 🏠
-            </a>
+            </Link>
             
-            <a 
+            <Link 
               href="/" 
               className="block w-full px-6 py-3 border border-gray-200 text-gray-700 font-medium rounded-full hover:bg-gray-50 transition-colors"
             >
               Back to Home
-            </a>
+            </Link>
           </div>
         </div>
       </div>

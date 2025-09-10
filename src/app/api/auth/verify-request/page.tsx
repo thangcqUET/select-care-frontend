@@ -1,3 +1,5 @@
+import Link from 'next/link';
+
 export default function VerifyRequest() {
   return (
     <div className="min-h-screen bg-gradient-to-br from-purple-50 via-blue-50 to-indigo-100 flex items-center justify-center px-6">
@@ -24,16 +26,16 @@ export default function VerifyRequest() {
 
           {/* Description */}
           <p className="text-gray-600 mb-6 leading-relaxed">
-            We've sent you a magic link! Click the link in your email to sign in to your SelectCare account.
+            We&apos;ve sent you a magic link! Click the link in your email to sign in to your SelectCare account.
           </p>
 
           {/* Instructions */}
           <div className="bg-gradient-to-r from-purple-50 to-blue-50 rounded-xl p-4 mb-6">
-            <h3 className="font-semibold text-gray-900 mb-2">What's next?</h3>
+            <h3 className="font-semibold text-gray-900 mb-2">What&apos;s next?</h3>
             <ol className="text-sm text-gray-600 text-left space-y-1">
               <li>1. Check your inbox (and spam folder just in case)</li>
               <li>2. Click the magic link in the email</li>
-              <li>3. You'll be automatically signed in! 🎉</li>
+              <li>3. You&apos;ll be automatically signed in! 🎉</li>
             </ol>
           </div>
 
@@ -44,18 +46,18 @@ export default function VerifyRequest() {
 
           {/* Back to Home Link */}
           <div className="mt-8">
-            <a 
+            <Link 
               href="/" 
               className="inline-flex items-center text-purple-600 hover:text-purple-700 transition-colors font-medium"
             >
               ← Back to home
-            </a>
+            </Link>
           </div>
         </div>
 
         {/* Footer Note */}
         <p className="text-center text-sm text-gray-500 mt-6">
-          Didn't receive an email? Check your spam folder or try again.
+          Didn&apos;t receive an email? Check your spam folder or try again.
         </p>
       </div>
     </div>

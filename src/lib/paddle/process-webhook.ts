@@ -26,8 +26,9 @@ export class ProcessWebhook {
 
   private async updateSubscriptionData(eventData: SubscriptionCreatedEvent | SubscriptionUpdatedEvent) {
     const supabase = await createClient();
-    const clientEmail = (eventData.data.customData as any).email as string | undefined;
-    const clientUserId = (eventData.data.customData as any).user_id as string | undefined;
+    const customData = eventData.data.customData as Record<string, unknown> | undefined;
+    const clientEmail = customData?.email as string | undefined;
+    const clientUserId = customData?.user_id as string | undefined;
     // add client context if email and user_id are present
     let clientContextId: string | null = null;
     if (clientEmail && clientUserId) {

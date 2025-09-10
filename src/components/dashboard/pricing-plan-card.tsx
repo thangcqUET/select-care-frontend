@@ -17,7 +17,7 @@ interface PricingPlanCardProps {
   };
 }
 
-export function PricingPlanCard({ currentPlan, subscription, user }: PricingPlanCardProps) {
+export function PricingPlanCard({ currentPlan, subscription }: PricingPlanCardProps) {
   const [isManaging, setIsManaging] = useState(false);
 
   const planFeatures = {

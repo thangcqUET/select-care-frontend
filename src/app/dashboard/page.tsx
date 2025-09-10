@@ -48,7 +48,7 @@ export default async function DashboardPage() {
       {/* Welcome Header */}
       <div className="mb-8">
         <h1 className="text-2xl font-bold text-gray-900">Welcome back!</h1>
-        <p className="text-gray-600">Here's an overview of your SelectCare account</p>
+        <p className="text-gray-600">Here&apos;s an overview of your SelectCare account</p>
       </div>
 
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">

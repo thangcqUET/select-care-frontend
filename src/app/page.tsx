@@ -136,7 +136,7 @@ export default function Home() {
             <svg className="w-6 h-6 mr-3" viewBox="0 0 24 24" fill="currentColor">
               <path d="M12,20L15.46,14H15.46C15.8,13.4 16,12.73 16,12C16,10.8 15.46,9.73 14.62,9H19.41C19.79,9.93 20,10.94 20,12A8,8 0 0,1 12,20M4,12C4,10.54 4.39,9.18 5.07,8.04L8.54,14C8.2,14.6 8,15.27 8,16C8,17.2 8.54,18.27 9.38,19H4.59C4.21,18.07 4,17.06 4,16V12M12,4A8,8 0 0,1 18.93,7.96L15.46,14C14.84,13.4 14,13 13.13,13H8.54C9.46,11.39 10.65,10.04 12.13,9.04L12,4M12,8A4,4 0 0,0 8,12A4,4 0 0,0 12,16A4,4 0 0,0 16,12A4,4 0 0,0 12,8Z"/>
             </svg>
-            Add to Chrome - It's Free!
+            Add to Chrome - It&apos;s Free!
           </a>
           
           <p className="text-sm mt-4 opacity-75">
@@ -152,7 +152,7 @@ export default function Home() {
             Choose Your Plan
           </h2>
           <p className="text-xl text-gray-600">
-            Start free, upgrade when you're ready 🚀
+            Start free, upgrade when you&apos;re ready 🚀
           </p>
         </div>
         
