@@ -13,10 +13,12 @@ export class ProcessWebhook {
     switch (eventData.eventType) {
       case EventName.SubscriptionCreated:
       case EventName.SubscriptionUpdated:
+        console.log('Processing subscription event:', eventData);
         await this.updateSubscriptionData(eventData);
         break;
       case EventName.CustomerCreated:
       case EventName.CustomerUpdated:
+        console.log('Processing customer event:', eventData);
         await this.updateCustomerData(eventData);
         break;
     }
@@ -24,6 +26,22 @@ export class ProcessWebhook {
 
   private async updateSubscriptionData(eventData: SubscriptionCreatedEvent | SubscriptionUpdatedEvent) {
     const supabase = await createClient();
+    const clientEmail = (eventData.data.customData as any).email as string | undefined;
+    const clientUserId = (eventData.data.customData as any).user_id as string | undefined;
+    // add client context if email and user_id are present
+    let clientContextId: string | null = null;
+    if (clientEmail && clientUserId) {
+      const { data: contextData, error: contextError } = await supabase
+        .from('client_context')
+        .upsert({
+          email: clientEmail ?? null,
+          user_id: clientUserId ?? null,
+        })
+        .select()
+        .single();
+      if (contextError) console.error('Error upserting client context:', contextError);
+      else clientContextId = contextData?.id || null;
+    }
     const { error } = await supabase
       .from('subscriptions')
       .upsert({
@@ -33,6 +51,7 @@ export class ProcessWebhook {
         product_id: eventData.data.items[0].price?.productId ?? '',
         scheduled_change: eventData.data.scheduledChange?.effectiveAt,
         customer_id: eventData.data.customerId,
+        client_context_id: clientContextId,
       })
       .select();
 

@@ -61,7 +61,7 @@ export default function Home() {
           </div>
 
           {/* Sign In - Secondary Option */}
-          <div className="mb-8">
+          <div id="sign-in-section" className="mb-8">
             <SignIn />
           </div>
 
@@ -156,14 +156,7 @@ export default function Home() {
           </p>
         </div>
         
-        <div className="flex justify-center">
-          <div className="bg-white/70 backdrop-blur-sm rounded-2xl p-8 text-center hover:shadow-xl transition-all duration-300 max-w-md">
-            <h3 className="text-2xl font-bold text-gray-900 mb-4">Premium Plan</h3>
-            <div className="text-4xl font-bold text-purple-500 mb-2">$9<span className="text-lg text-gray-500">/mo</span></div>
-            <p className="text-gray-600 mb-8">Unlimited selections, advanced features, priority support</p>
-            <Payment />
-          </div>
-        </div>
+        <Payment />
       </section>
 
       {/* Footer */}

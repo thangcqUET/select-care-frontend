@@ -12,9 +12,17 @@ export async function GET(request: NextRequest) {
 
   if (token_hash && type) {
     const supabase = await createClient()
-    const { error } = await supabase.auth.verifyOtp({ type, token_hash })
-    if (!error) {
-      redirect(redirectTo)
+    const { data:{ user }, error } = await supabase.auth.verifyOtp({ type, token_hash })
+    if (!error && user) {
+        const { error: updatedError } = await supabase
+            .from('customers')
+            .update({ user_id: user.id })
+            .eq('email', user.email)
+            .select()
+        if (updatedError) {
+            console.error("Error updating customer:", updatedError)
+        }
+        redirect(redirectTo)
     }
   }
 

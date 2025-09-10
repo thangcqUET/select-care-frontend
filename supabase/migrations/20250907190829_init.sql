@@ -1,7 +1,8 @@
 -- Create customers table to map Paddle customer_id to email
 create table
   public.customers (
-    customer_id "uuid" not null,
+    customer_id text not null,
+    user_id "uuid" not null,
     email text not null,
     created_at timestamp with time zone not null default now(),
     updated_at timestamp with time zone not null default now(),
@@ -16,22 +17,30 @@ create table
     price_id text null,
     product_id text null,
     scheduled_change text null,
-    customer_id "uuid" not null,
+    customer_id text not null,
+    client_context_id uuid null references public.client_context(id) on delete set null,
     created_at timestamp with time zone not null default now(),
     updated_at timestamp with time zone not null default now(),
     constraint subscriptions_pkey primary key (subscription_id),
     constraint public_subscriptions_customer_id_fkey foreign key (customer_id) references customers (customer_id)
   ) tablespace pg_default;
 
+create table
+  public.client_context (
+    id uuid default gen_random_uuid() primary key,
+    user_id uuid null,
+    email text null,
+    created_at timestamp with time zone default now(),
+    updated_at timestamp with time zone default now()
+  ) tablespace pg_default;
+
+-- ALTER TABLE ONLY "public"."customers"
+--     ADD CONSTRAINT "customers_user_id_fkey" FOREIGN KEY ("user_id") REFERENCES "auth"."users"("id");
 
 
-ALTER TABLE ONLY "public"."customers"
-    ADD CONSTRAINT "customers_customer_id_fkey" FOREIGN KEY ("customer_id") REFERENCES "auth"."users"("id");
 
-
-
-ALTER TABLE ONLY "public"."subscriptions"
-    ADD CONSTRAINT "subscriptions_customer_id_fkey" FOREIGN KEY ("customer_id") REFERENCES "public"."customers"("customer_id");
+-- ALTER TABLE ONLY "public"."subscriptions"
+--     ADD CONSTRAINT "subscriptions_customer_id_fkey" FOREIGN KEY ("customer_id") REFERENCES "public"."customers"("customer_id");
 
 
 

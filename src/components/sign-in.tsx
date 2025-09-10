@@ -42,7 +42,7 @@ export async function SignIn() {
             </div>
             <h3 className="text-xl font-semibold text-gray-900 mb-2">Welcome back!</h3>
             <p className="text-gray-600">Hey there, <span className="font-medium text-purple-600">{user?.email}</span></p>
-            <p className="text-sm text-gray-500 mt-4">You're ready to start selecting amazing content! 🎉</p>
+            <p className="text-sm text-gray-500 mt-4">You&apos;re ready to start selecting amazing content! 🎉</p>
           </div>
         )
       }
