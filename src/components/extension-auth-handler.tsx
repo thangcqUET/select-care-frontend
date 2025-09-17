@@ -29,7 +29,9 @@ export function ExtensionAuthHandler() {
       // Check if user is authenticated
       const client = await createClient();
       const { data: { user } } = await client.auth.getUser();
+      console.log("Current user:", user);
       if (user) {
+        console.log("User authenticated:", user.email);
         // Generate API token for the extension
         const tokenResponse = await fetch('/api/extension/auth', {
           method: 'POST',

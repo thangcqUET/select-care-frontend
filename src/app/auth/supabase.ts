@@ -12,18 +12,20 @@ export const auth = async () => {
 
 }
 
-export const signIn = async (email: string) => {
+export const signIn = async (email: string, extension_auth: boolean, state: string) => {
     const supabase = await createClient();
     // Lấy origin từ headers
     const headersList = await headers();
     const host = headersList.get('host');
     const protocol = headersList.get('x-forwarded-proto') || 'http';
     const origin = `${protocol}://${host}`;
-   
+    // Gửi email xác thực với redirectTo
+    const referer = origin + (extension_auth ? `?extension_auth=true&state=${state}` : '/');
+    console.log("Sign-in referer:", referer);
     const { data, error } = await supabase.auth.signInWithOtp({
         email,
         options:{
-            emailRedirectTo: `${origin}`
+            emailRedirectTo: `${referer}`
         }
     });
     if (error) {
