@@ -17,7 +17,7 @@ export async function POST(request: NextRequest) {
       }
       throw err;
     }
-  const { text, target, source } = body;
+  const { text, target, source, context } = body;
 
     const maybeResp = validateTextField(text);
     if (maybeResp) return maybeResp;
@@ -30,9 +30,11 @@ export async function POST(request: NextRequest) {
       return NextResponse.json({ error: 'Rate limit exceeded' }, { status: 429, headers: { 'Retry-After': String(Math.ceil((rl.reset - Date.now()) / 1000)) } });
     }
 
-  // compute small context window (3 chars before + word + 3 chars after)
+  // compute small context window (3 words before + word + 3 words after)
   const targetWord = (body && body.word && typeof body.word === 'string') ? body.word : (text.trim().split(/\s+/)[0] || '');
-  const contextTrim = targetWord ? trimContextAround(text, targetWord, 3) : undefined;
+  // If client sent a `context` string, trim that around the target word; otherwise use the original text.
+  const sourceForContext = (context && typeof context === 'string') ? context : text;
+  const contextTrim = targetWord ? trimContextAround(sourceForContext, targetWord, 3) : undefined;
     if (!target || typeof target !== 'string') {
       return NextResponse.json({ error: 'Missing or invalid `target` language' }, { status: 400 });
     }
