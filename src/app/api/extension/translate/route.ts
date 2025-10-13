@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server';
-import { auth } from '@/app/auth/supabase';
+// import { auth } from '@/app/auth/supabase';
 import { detectLanguage, translateText } from '@/lib/translation';
 import { trimContextAround } from '@/lib/context';
 import { validateTextField } from '@/lib/validation';
