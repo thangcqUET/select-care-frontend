@@ -73,10 +73,7 @@ export default function Home({ searchParams }: {
                 </button>
               </div>
 
-              {/* Sign In Section */}
-              <div id="sign-in-section" className="flex flex-col sm:flex-row gap-4 mb-8">
-                <SignIn searchParams={searchParams} />
-              </div>
+              {/* Sign In Section is moved below the hero to keep CTA area clean */}
 
               {/* Trust Indicators */}
               <div className="flex flex-wrap justify-center lg:justify-start gap-6 text-sm text-gray-500">
@@ -150,6 +147,13 @@ export default function Home({ searchParams }: {
               </div>
             </div>
           </div>
+        </div>
+      </section>
+
+      {/* Sign In Section (moved below Hero) */}
+      <section id="sign-in-section" className="py-8 bg-white">
+        <div className="max-w-3xl mx-auto px-6">
+          <SignIn searchParams={searchParams} />
         </div>
       </section>
 
