@@ -2,9 +2,10 @@
 import { redirect } from "next/navigation"
 import { signIn, auth } from "../app/auth/supabase"
 
-export async function SignIn({ searchParams }: { searchParams: any }) {
+export async function SignIn({ searchParams }: { searchParams: { [key: string]: string | string[] | undefined } }) {
   const user = await auth();
-  const { extension_auth, state } = await searchParams;
+  const extension_auth = Array.isArray(searchParams.extension_auth) ? searchParams.extension_auth[0] : searchParams.extension_auth;
+  const state = Array.isArray(searchParams.state) ? searchParams.state[0] : searchParams.state;
   //get extension_auth and state from url params
 
   return (
@@ -14,7 +15,10 @@ export async function SignIn({ searchParams }: { searchParams: any }) {
         <form
           action={async (formData) => {
             "use server"
-            await signIn(formData.get("email") as string, extension_auth, state)
+            const email = String(formData.get("email"));
+            const extFlag = extension_auth === 'true' || extension_auth === '1' || extension_auth === 'on' ? true : false;
+            const st = typeof state === 'string' ? state : '';
+            await signIn(email, extFlag, st)
             redirect("/api/auth/verify-request")
           }}
           className="w-full"

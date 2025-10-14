@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 // Lightweight translation provider wrapper used by API routes.
 // Supports two providers via environment variables:
 // - Google Translate (default) using GOOGLE_API_KEY and the REST v2 endpoints

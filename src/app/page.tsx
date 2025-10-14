@@ -4,9 +4,7 @@ import Payment from "../components/payment";
 import { ExtensionAuthHandler } from "../components/extension-auth-handler";
 import { Suspense } from "react";
 
-export default function Home({ searchParams }: {
-  searchParams: { [key: string]: string | string[] | undefined };
-}) {
+export default function Home() {
   return (
     <div className="min-h-screen bg-white">
       {/* Extension Authentication Handler */}
