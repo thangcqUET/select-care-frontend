@@ -52,7 +52,7 @@ export default function Home() {
               {/* Primary CTAs */}
               <div className="flex flex-col sm:flex-row gap-4 mb-8">
                 <a 
-                  href="https://chrome.google.com/webstore/detail/selectcare" 
+                  href="https://chromewebstore.google.com/detail/fmnlflicblkpblclchppkhkjeabjhhhd/preview" 
                   target="_blank" 
                   rel="noopener noreferrer"
                   className="inline-flex items-center justify-center px-8 py-4 bg-gray-900 text-white font-semibold rounded-2xl hover:bg-gray-800 transition-all duration-300 shadow-lg hover:shadow-xl"
