@@ -12,7 +12,7 @@ export default function PrivacyPage() {
 
         <h2 className="text-xl font-semibold text-gray-900 mt-6 mb-2">Data Collected</h2>
         <p className="text-gray-700 mb-3">
-          We collect minimal data necessary to provide the extension's functionality:
+          We collect minimal data necessary to provide the extension functionality:
         </p>
         <ul className="list-disc list-inside text-gray-700 space-y-2">
           <li>Authentication token and user email (stored locally via chrome.storage) to maintain your logged-in state.</li>
@@ -53,7 +53,7 @@ export default function PrivacyPage() {
         </p>
 
         <h2 className="text-xl font-semibold text-gray-900 mt-6 mb-2">Your Choices</h2>
-        <p className="text-gray-700 mb-3">You can sign out at any time from the extension popup which clears locally stored authentication credentials. You can also disable sync or opt out of any optional telemetry in the extension settings (if enabled).</p>
+  <p className="text-gray-700 mb-3">You can sign out at any time from the extension popup which clears locally stored authentication credentials. You can also disable sync or opt out of any optional telemetry in the extension settings (if enabled).</p>
 
         <h2 className="text-xl font-semibold text-gray-900 mt-6 mb-2">Contact</h2>
         <p className="text-gray-700 mb-6">If you have questions about privacy, please contact us at support@selectcare.example (replace with your real support email).</p>
