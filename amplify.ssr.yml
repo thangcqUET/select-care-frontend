@@ -1,0 +1,33 @@
+version: 1
+frontend:
+  phases:
+    preBuild:
+      commands:
+        - npm ci
+        # Additional variables from .env.example
+        - echo "DATABASE_URL=$DATABASE_URL" >> .env.production
+        - echo "AUTH_RESEND_KEY=$AUTH_RESEND_KEY" >> .env.production
+        - echo "AUTH_SECRET=$AUTH_SECRET" >> .env.production
+        - echo "JWT_SECRET=$JWT_SECRET" >> .env.production
+        - echo "NEXT_PUBLIC_PADDLE_ENV=$NEXT_PUBLIC_PADDLE_ENV" >> .env.production
+        - echo "NEXT_PUBLIC_PADDLE_CLIENT_TOKEN=$NEXT_PUBLIC_PADDLE_CLIENT_TOKEN" >> .env.production
+        - echo "PADDLE_NOTIFICATION_WEBHOOK_SECRET=$PADDLE_NOTIFICATION_WEBHOOK_SECRET" >> .env.production
+        - echo "NEXT_PUBLIC_EXTENSION_ID=$NEXT_PUBLIC_EXTENSION_ID" >> .env.production
+        - echo "NEXT_PUBLIC_SUPABASE_URL=$NEXT_PUBLIC_SUPABASE_URL" >> .env.production
+        - echo "NEXT_PUBLIC_SUPABASE_PUBLISHABLE_OR_ANON_KEY=$NEXT_PUBLIC_SUPABASE_PUBLISHABLE_OR_ANON_KEY" >> .env.production
+        - echo "SUPABASE_SERVICE_ROLE_KEY=$SUPABASE_SERVICE_ROLE_KEY" >> .env.production
+        - echo "DEEPSEEK_API_KEY=$DEEPSEEK_API_KEY" >> .env.production
+        - echo "DEEPSEEK_URL=$DEEPSEEK_URL" >> .env.production
+        - echo "TRANSLATION_PROVIDER=$TRANSLATION_PROVIDER" >> .env.production
+        - echo "GOOGLE_API_KEY=$GOOGLE_API_KEY" >> .env.production
+    build:
+      commands:
+        - npm run build
+  artifacts:
+    # For SSR, Amplify will run the server build; directory is the server output
+    baseDirectory: .next
+    files:
+      - '**/*'
+  cache:
+    paths:
+      - node_modules/**
