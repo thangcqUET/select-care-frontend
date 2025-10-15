@@ -234,9 +234,9 @@ export default function Home() {
               Made with care for content creators and knowledge workers
             </p>
             <div className="flex justify-center space-x-6 text-gray-500">
-              <a href="#" className="hover:text-gray-700 transition-colors">Privacy</a>
-              <a href="#" className="hover:text-gray-700 transition-colors">Terms</a>
-              <a href="#" className="hover:text-gray-700 transition-colors">Support</a>
+              <a href="/privacy" className="hover:text-gray-700 transition-colors">Privacy</a>
+              <a href="/terms" className="hover:text-gray-700 transition-colors">Terms</a>
+              <a href="/support" className="hover:text-gray-700 transition-colors">Support</a>
             </div>
           </div>
         </div>
