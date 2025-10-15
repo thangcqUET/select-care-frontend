@@ -32,11 +32,11 @@ async function detectWithGoogle(text: string, context?: string): Promise<DetectR
   const key = process.env.GOOGLE_API_KEY;
   if (!key) throw new Error('Missing GOOGLE_API_KEY');
 
-  const url = `https://translation.googleapis.com/language/translate/v2/detect?key=${encodeURIComponent(key)}`;
+  const url = `https://translation.googleapis.com/language/translate/v2/detect`;
   // include context as an additional q if provided
   const q = context ? [context, text] : text;
   const body = JSON.stringify({ q });
-  const res = await timeoutFetch(url, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body });
+  const res = await timeoutFetch(url, { method: 'POST', headers: { 'Content-Type': 'application/json', 'x-goog-api-key': key }, body });
   if (!res.ok) throw new Error(`Google detect failed: ${res.status}`);
   const json = await res.json();
   // expected shape: { data: { detections: [[{language, confidence}, ...]] } }
@@ -66,13 +66,13 @@ async function translateWithGoogle(text: string, target: string, source?: string
   const key = process.env.GOOGLE_API_KEY;
   if (!key) throw new Error('Missing GOOGLE_API_KEY');
 
-  const url = `https://translation.googleapis.com/language/translate/v2?key=${encodeURIComponent(key)}`;
+  const url = `https://translation.googleapis.com/language/translate/v2`;
   // Google accepts multiple `q` values; include context as an additional prompt if provided
   const payload: Record<string, unknown> = { q: [text], target, format: 'text' };
-  if (context) (payload.q as string[]).unshift(context);
+  // if (context) (payload.q as string[]).unshift(context);
   if (source) payload.source = source;
 
-  const res = await timeoutFetch(url, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(payload) });
+  const res = await timeoutFetch(url, { method: 'POST', headers: { 'Content-Type': 'application/json', 'x-goog-api-key': key }, body: JSON.stringify(payload) });
   if (!res.ok) throw new Error(`Google translate failed: ${res.status}`);
   const json: unknown = await res.json();
   // expected shape: { data: { translations: [{ translatedText, detectedSourceLanguage? }] } }
