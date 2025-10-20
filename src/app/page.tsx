@@ -16,8 +16,8 @@ export default function Home() {
       <nav className="w-full px-6 py-6 bg-white border-b border-gray-100">
         <div className="max-w-6xl mx-auto flex items-center justify-between">
           <div className="flex items-center space-x-3">
-            <img src="/logo_select_care.svg" alt="SelectCare" className="w-10 h-10 object-contain" />
-            <span className="text-2xl font-bold text-gray-900">SelectCare</span>
+            <img src="/logo_select_care.svg" alt="Select Care" className="w-10 h-10 object-contain" />
+            <span className="text-2xl font-bold text-gray-900">Select Care</span>
           </div>
           <div className="hidden md:flex items-center space-x-8">
             <a href="#features" className="text-gray-600 hover:text-gray-900 transition-colors font-medium">Features</a>
@@ -75,7 +75,7 @@ export default function Home() {
                     <div className="w-full rounded-xl overflow-hidden" style={{aspectRatio: '16/9', height: '520px', maxHeight: '60vh'}}>
                       <iframe
                         src="https://www.youtube.com/embed/FWSBsXfT6UM"
-                        title="SelectCare Demo"
+                        title="Select Care Demo"
                         frameBorder="0"
                         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                         allowFullScreen
@@ -83,7 +83,7 @@ export default function Home() {
                       />
                     </div>
                     {/* <div className="mt-3 text-center px-1">
-                      <div className="text-sm font-medium text-white/90">See how SelectCare captures selections in one click</div>
+                      <div className="text-sm font-medium text-white/90">See how Select Care captures selections in one click</div>
                       <div className="text-xs text-white/70 mt-1">Quick walkthrough of core features</div>
                     </div> */}
                   </div>
@@ -152,7 +152,7 @@ export default function Home() {
                 {/* <img src="https://media.giphy.com/media/3ohhwF34cGDoFFhRfy/giphy.gif" alt="updates demo" className="w-full md:w-2/3 h-72 md:h-96 object-cover rounded-lg flex-shrink-0" /> */}
                 <div className="md:w-1/3 flex-1">
                   <h3 className="text-lg font-semibold text-gray-900 mb-2">Actively improved...</h3>
-                  <p className="text-gray-600">We keep shipping updates and new integrations to make SelectCare better.</p>
+                  <p className="text-gray-600">We keep shipping updates and new integrations to make Select Care better.</p>
                 </div>
               </li>
             </ul>
@@ -227,8 +227,8 @@ export default function Home() {
         <div className="max-w-6xl mx-auto px-6">
           <div className="text-center">
             <div className="flex items-center justify-center space-x-3 mb-6">
-              <img src="/logo_select_care.svg" alt="SelectCare" className="w-10 h-10 object-contain" />
-              <span className="text-2xl font-bold text-gray-900">SelectCare</span>
+              <img src="/logo_select_care.svg" alt="Select Care" className="w-10 h-10 object-contain" />
+              <span className="text-2xl font-bold text-gray-900">Select Care</span>
             </div>
             <p className="text-gray-600 mb-6">
               Made with care for content creators and knowledge workers
