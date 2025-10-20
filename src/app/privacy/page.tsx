@@ -7,7 +7,7 @@ export default function PrivacyPage() {
         <h1 className="text-3xl font-bold text-gray-900 mb-6">Privacy Policy</h1>
 
         <p className="text-gray-700 mb-4">
-          This Privacy Policy explains how SelectCare collects, uses, and discloses information when you use the SelectCare Chrome extension and the associated web services.
+          This Privacy Policy explains how Select Care collects, uses, and discloses information when you use the Select Care Chrome extension and the associated web services.
         </p>
 
         <h2 className="text-xl font-semibold text-gray-900 mt-6 mb-2">Data Collected</h2>
