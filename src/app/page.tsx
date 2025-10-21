@@ -1,6 +1,5 @@
 import React from 'react';
-import { SignIn } from "../components/sign-in";
-import Payment from "../components/payment";
+import Link from 'next/link';
 import { ExtensionAuthHandler } from "../components/extension-auth-handler";
 import { LanguageSwitcher } from "../components/LanguageSwitcher";
 import { Suspense } from "react";
@@ -239,9 +238,9 @@ export default function Home() {
               Made with care for content creators and knowledge workers
             </p>
             <div className="flex justify-center space-x-6 text-gray-500">
-              <a href="/privacy" className="hover:text-gray-700 transition-colors">Privacy</a>
-              <a href="/terms" className="hover:text-gray-700 transition-colors">Terms</a>
-              <a href="/support" className="hover:text-gray-700 transition-colors">Support</a>
+              <Link href="/privacy" className="hover:text-gray-700 transition-colors">Privacy</Link>
+              <Link href="/terms" className="hover:text-gray-700 transition-colors">Terms</Link>
+              <Link href="/support" className="hover:text-gray-700 transition-colors">Support</Link>
             </div>
           </div>
         </div>

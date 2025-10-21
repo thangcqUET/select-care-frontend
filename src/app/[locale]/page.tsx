@@ -1,12 +1,11 @@
 'use client';
 
 import React, { use } from 'react';
-import { SignIn } from "../../components/sign-in";
-import Payment from "../../components/payment";
 import { ExtensionAuthHandler } from "../../components/extension-auth-handler";
 import { LanguageSwitcher } from "../../components/LanguageSwitcher";
 import { Suspense } from "react";
 import { t, type Locale } from "../../lib/i18n";
+import Image from 'next/image';
 
 type PageProps = {
   params: Promise<{ locale: string }>;

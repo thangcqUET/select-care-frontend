@@ -1,3 +1,5 @@
+import Link from 'next/link';
+
 interface Selection {
   id: string;
   title: string | null;
@@ -41,12 +43,12 @@ export function SelectionsList({ selections }: SelectionsListProps) {
     <div className="bg-white rounded-xl shadow-sm border border-gray-200 p-6">
       <div className="flex items-center justify-between mb-6">
         <h2 className="text-lg font-semibold text-gray-900">Recent Selections</h2>
-        <a 
+        <Link 
           href="/selections" 
           className="text-sm text-purple-600 hover:text-purple-800 font-medium"
         >
           View All →
-        </a>
+        </Link>
       </div>
       
       <div className="space-y-4">
