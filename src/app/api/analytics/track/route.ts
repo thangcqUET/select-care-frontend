@@ -146,7 +146,7 @@ export async function POST(request: NextRequest) {
 /**
  * OPTIONS handler for CORS preflight
  */
-export async function OPTIONS(request: NextRequest) {
+export async function OPTIONS() {
   return NextResponse.json(
     {},
     {
