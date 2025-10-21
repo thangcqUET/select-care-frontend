@@ -2,9 +2,13 @@ import React from 'react';
 import { SignIn } from "../components/sign-in";
 import Payment from "../components/payment";
 import { ExtensionAuthHandler } from "../components/extension-auth-handler";
+import { LanguageSwitcher } from "../components/LanguageSwitcher";
 import { Suspense } from "react";
+import { getCurrentLocale } from "../lib/i18n";
 
 export default function Home() {
+  const currentLocale = getCurrentLocale();
+  
   return (
     <div className="min-h-screen bg-white">
       {/* Extension Authentication Handler */}
@@ -19,12 +23,13 @@ export default function Home() {
             <img src="/logo_select_care.svg" alt="Select Care" className="w-10 h-10 object-contain" />
             <span className="text-2xl font-bold text-gray-900">Select Care</span>
           </div>
-          <div className="hidden md:flex items-center space-x-8">
+          <div className="hidden md:flex items-center space-x-4">
             <a href="#features" className="text-gray-600 hover:text-gray-900 transition-colors font-medium">Features</a>
             {/* <a href="#pricing" className="text-gray-600 hover:text-gray-900 transition-colors font-medium">Pricing</a> */}
             {/* <div className="px-4 py-2 bg-purple-100 text-purple-600 rounded-full text-sm font-medium">
               Coming Soon
             </div> */}
+            <LanguageSwitcher currentLocale={currentLocale} showLabel={false} />
           </div>
         </div>
       </nav>
