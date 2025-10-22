@@ -3,8 +3,7 @@ frontend:
   phases:
     preBuild:
       commands:
-        - npm ci
-        # Additional variables from .env.example
+        - npm ci --cache .npm --prefer-offline
         - echo "DATABASE_URL=$DATABASE_URL" >> .env.production
         - echo "AUTH_RESEND_KEY=$AUTH_RESEND_KEY" >> .env.production
         - echo "AUTH_SECRET=$AUTH_SECRET" >> .env.production
@@ -20,15 +19,22 @@ frontend:
         - echo "DEEPSEEK_URL=$DEEPSEEK_URL" >> .env.production
         - echo "TRANSLATION_PROVIDER=$TRANSLATION_PROVIDER" >> .env.production
         - echo "GOOGLE_API_KEY=$GOOGLE_API_KEY" >> .env.production
+        - echo "GA4_DEV_MEASUREMENT_ID=$GA4_DEV_MEASUREMENT_ID" >> .env.production
+        - echo "GA4_DEV_API_SECRET=$GA4_DEV_API_SECRET" >> .env.production
+        - echo "GA4_PROD_MEASUREMENT_ID=$GA4_PROD_MEASUREMENT_ID" >> .env.production
+        - echo "GA4_PROD_API_SECRET=$GA4_PROD_API_SECRET" >> .env.production
+        - echo "CHECK_AMPLIFY=1" >> .env.production
     build:
       commands:
         - npm run build
-        - npm run export
   artifacts:
-    # Next.js static export output
-    baseDirectory: out
+    baseDirectory: .next
     files:
       - '**/*'
   cache:
     paths:
-      - node_modules/**
+      - .next/cache/**/*
+      - .npm/**/*
+  environment:
+    variables:
+      AMPLIFY_MONOREPO_APP_ROOT: .
