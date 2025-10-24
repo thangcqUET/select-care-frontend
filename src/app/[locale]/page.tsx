@@ -217,11 +217,16 @@ export default function Home({ params }: PageProps) {
         <div className="max-w-6xl mx-auto px-6">
           <div className="flex flex-col md:flex-row justify-between items-center">
             <div className="flex items-center space-x-3 mb-4 md:mb-0">
-              <img src="/logo_select_care.svg" alt="Select Care" className="w-10 h-10 object-contain brightness-0 invert" />
+              <img src="/logo_select_care.svg" alt="Select Care" className="w-10 h-10 object-contain" />
               <span className="text-xl font-bold">Select Care</span>
             </div>
-            <div className="text-gray-400 text-sm">
-              © 2025 Select Care. All rights reserved.
+            <div className="flex items-center space-x-6">
+              <a href={`/${locale}/privacy`} className="text-gray-400 hover:text-white transition-colors text-sm">
+                Privacy Policy
+              </a>
+              <div className="text-gray-400 text-sm">
+                © 2025 Select Care. All rights reserved.
+              </div>
             </div>
           </div>
         </div>
